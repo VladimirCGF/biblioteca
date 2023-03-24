@@ -24,7 +24,6 @@ public class Biblioteca {
     public static void cadastrarLivroNaBiblioteca(Biblioteca biblioteca, Livros livro) {
         biblioteca.getLivros().add(livro);
     }
-
     @Override
     public String toString() {
         return "\nNome Biblioteca: " + nome +

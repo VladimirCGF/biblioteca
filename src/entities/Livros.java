@@ -10,10 +10,20 @@ public class Livros {
     private Autor autor;
     private String genero;
 
+    public Livros() {
+
+    }
+
     public Livros(String titulo, LocalDate dataLancamento, Autor autor, String genero) {
         this.titulo = titulo;
         this.dataLancamento = dataLancamento;
         this.autor = autor;
+        this.genero = genero;
+    }
+
+    public Livros(String titulo, LocalDate dataLancamento, String genero) {
+        this.titulo = titulo;
+        this.dataLancamento = dataLancamento;
         this.genero = genero;
     }
 
@@ -38,12 +48,25 @@ public class Livros {
         livros.add(livro);
     }
 
+    public static void cadastrarLivroSemAutor(List<Livros> livros, String titulo, LocalDate dataLancamento, String genero) {
+        Livros livro = new Livros(titulo, dataLancamento, genero);
+        livros.add(livro);
+    }
+
     @Override
     public String toString() {
-        return
-                "\nTitulo: " + titulo +
-                        "\nData de Lançamento: " + dataLancamento.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")) +
-                        "\nAutor: " + autor.getNome() +
-                        "\nGenero: " + genero;
+        if (autor != null) {
+            return
+                    "\nTitulo: " + titulo +
+                            "\nData de Lançamento: " + dataLancamento.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")) +
+                            "\nAutor: " + autor.getNome() +
+                            "\nGenero: " + genero;
+        } else {
+            return
+                    "\nTitulo: " + titulo +
+                            "\nData de Lançamento: " + dataLancamento.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")) +
+                            "\nGenero: " + genero;
+
+        }
     }
 }
